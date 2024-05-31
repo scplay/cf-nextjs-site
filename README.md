@@ -1,5 +1,5 @@
 # For Cloudflare Deployment Reference
-[deploy-a-static-nextjs-site](https://developers.cloudflare.com/pages/framework-guides/nextjs/deploy-a-static-nextjs-site/)
+[deploy-a-static-nextjs-site](https://developers.cloudflare.com/pages/framework-guides/nextjs/deploy-a-static-nextjs-site/) - Next.js(Static Export)
 
 # Next.js Static Export
 
