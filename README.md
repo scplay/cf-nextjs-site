@@ -1,3 +1,6 @@
+# For Cloudflare Deployment Reference
+[deploy-a-static-nextjs-site](https://developers.cloudflare.com/pages/framework-guides/nextjs/deploy-a-static-nextjs-site/)
+
 # Next.js Static Export
 
 Next.js enables starting as a static site or Single-Page Application (SPA), then later optionally upgrading to use features that require a server.
