@@ -1,11 +1,13 @@
 "use client"
 
+import "./style/global.css";
+
 import Link from "next/link";
+import ScHome from "./schome/page";
 import { useEffect, useRef } from "react";
 import Typed from 'typed.js';
 
 const Home = () => {
-
   const termEl = useRef(null);
   useEffect(() => {
     const typed = new Typed(termEl.current, {
@@ -37,4 +39,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default ScHome;

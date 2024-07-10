@@ -1,0 +1,174 @@
+@font-face {
+  font-family: "sc2";
+  src: local("StarcraftNormal"), url("/font/StarcraftNormal.ttf");
+}
+/* @font-face {
+  font-family: "Orbitron";
+  src: local("Orbitron"),
+    url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap");
+} */
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap');
+
+.home-body {
+  font-family: "Orbitron", sans-serif;
+  line-height: 1.6;
+  color: #00ffff;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  position: relative;
+}
+.home-body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    url("https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  opacity: 0.8;
+  z-index: -1;
+}
+.home-body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #000011;
+  z-index: -2;
+}
+.home-body header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+.home-body h1,
+.home-body h2 {
+  color: #00ffff;
+  color: #b0e0ff;
+  color: black;
+  /* color: white; */
+  text-shadow: 0 0 5px #4488ff, 0 0 5px #4488ff, 0 0 10px #4488ff;
+  font-family: sc2;
+}
+.home-body h1 {
+  font-size: 3em;
+}
+.home-body h2 {
+  font-size: 2em;
+  margin-top: 30px;
+}
+.profile-img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 20px auto;
+  display: block;
+  box-shadow: 0 0 20px rgba(68, 136, 255, 0.8);
+  border: 1px solid #4488ff;
+}
+.typewriter {
+  text-align: center;
+  min-height: 26px;
+}
+.social-links {
+  text-align: center;
+  margin-top: 30px;
+}
+.social-links a {
+  display: inline-block;
+  margin: 0 10px;
+  color: #4488ff;
+  text-decoration: none;
+  font-size: 1.2em;
+  transition: all 0.3s ease;
+  text-shadow: 0 0 5px #4488ff;
+}
+.social-links a:hover {
+  color: #00ffff;
+  /* color: black; */
+  text-shadow: 0 0 10px #00ffff;
+}
+.about {
+  background-color: rgba(0, 20, 40, 0.7);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(68, 136, 255, 0.3);
+  margin-top: 30px;
+  border: 1px solid #4488ff;
+}
+.about-title {
+  all: unset;
+  transition: all 0.3s ease;
+}
+.about-title:hover {
+  cursor: pointer;
+  color: #00ffff;
+}
+.home-body p,
+.home-body ul {
+  color: #b0e0ff;
+  text-shadow: 0 0 5px #4488ff;
+}
+#particles-js {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+.nebula {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(20px);
+  opacity: 0.5;
+}
+#nebula1 {
+  width: 300px;
+  height: 300px;
+  top: -100px;
+  right: -100px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 0, 255, 0.3) 0%,
+    rgba(0, 0, 255, 0.1) 50%,
+    rgba(0, 0, 0, 0) 70%
+  );
+  animation: pulsate 10s infinite alternate;
+}
+#nebula2 {
+  width: 400px;
+  height: 400px;
+  bottom: 0;
+  left: 0;
+  background: radial-gradient(
+    circle,
+    rgba(0, 255, 255, 0.3) 0%,
+    rgba(0, 0, 255, 0.1) 50%,
+    rgba(0, 0, 0, 0) 70%
+  );
+  animation: pulsate 15s infinite alternate-reverse;
+  z-index: -1;
+}
+@keyframes pulsate {
+  0% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(0.6);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+}
