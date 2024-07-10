@@ -3,11 +3,59 @@
 import "./page.css";
 import { useEffect, useRef } from "react";
 import Typed from "typed.js";
-import "particles.js";
 import Link from "next/link";
+
+async function initParticleJS() {
+  if (process?.title === 'browser') {
+
+    await import("particles.js")
+
+    particlesJS("particles-js", {
+      particles: {
+        number: { value: 100, density: { enable: true, value_area: 800 } },
+        color: { value: "#ffffff" },
+        shape: { type: "circle" },
+        opacity: { value: 0.5, random: true },
+        size: { value: 2, random: true },
+        line_linked: {
+          enable: false,
+        },
+        move: {
+          enable: true,
+          speed: 0.5,
+          direction: "none",
+          random: true,
+          straight: false,
+          out_mode: "out",
+          bounce: false,
+        },
+      },
+      interactivity: {
+        detect_on: "canvas",
+        events: {
+          onhover: { enable: true, mode: "bubble" },
+          onclick: { enable: true, mode: "repulse" },
+          resize: true,
+        },
+        modes: {
+          bubble: {
+            distance: 250,
+            size: 0,
+            duration: 2,
+            opacity: 0,
+            speed: 3,
+          },
+          repulse: { distance: 400, duration: 0.4 },
+        },
+      },
+      retina_detect: true,
+    });
+  }
+}
 
 const ScHome = () => {
   const termEl = useRef(null);
+
   useEffect(() => {
     const typed = new Typed(termEl.current, {
       strings: [
@@ -23,46 +71,7 @@ const ScHome = () => {
       loop: false,
     });
 
-    particlesJS("particles-js", {
-        particles: {
-          number: { value: 100, density: { enable: true, value_area: 800 } },
-          color: { value: "#ffffff" },
-          shape: { type: "circle" },
-          opacity: { value: 0.5, random: true },
-          size: { value: 2, random: true },
-          line_linked: {
-            enable: false,
-          },
-          move: {
-            enable: true,
-            speed: 0.5,
-            direction: "none",
-            random: true,
-            straight: false,
-            out_mode: "out",
-            bounce: false,
-          },
-        },
-        interactivity: {
-          detect_on: "canvas",
-          events: {
-            onhover: { enable: true, mode: "bubble" },
-            onclick: { enable: true, mode: "repulse" },
-            resize: true,
-          },
-          modes: {
-            bubble: {
-              distance: 250,
-              size: 0,
-              duration: 2,
-              opacity: 0,
-              speed: 3,
-            },
-            repulse: { distance: 400, duration: 0.4 },
-          },
-        },
-        retina_detect: true,
-      });
+    initParticleJS()
 
     return () => {
       // Destroy Typed instance during cleanup to stop animation
@@ -138,4 +147,3 @@ const ScHome = () => {
 };
 
 export default ScHome;
-declare function particlesJS(...arg: any): any
