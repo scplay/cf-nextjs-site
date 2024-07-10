@@ -125,7 +125,7 @@ const ScHome = () => {
               serverless services
             </li>
             <li>
-              Timing Attacking - Expertised in project management and flow
+              Timing Attack - Expertised in project management and flow
               control
             </li>
           </ul>
