@@ -5,6 +5,8 @@ import { useEffect, useRef } from "react";
 import Typed from "typed.js";
 import Link from "next/link";
 
+const ABOUT_ROUTE = '/pages/about';
+
 async function initParticleJS() {
   if (process?.title === 'browser') {
 
@@ -140,7 +142,7 @@ const ScHome = () => {
         <a href="https://github.com/scplay">GitHub</a>
         <a href="https://twitter.com/zeon_wang">Twitter</a>
         <a href="https://www.linkedin.com/in/zeon-wang-3639aa2b/">LinkedIn</a>
-        <Link href="/about">Contact</Link>
+        <Link href={ABOUT_ROUTE}>Contact</Link>
       </div>
     </div>
   );

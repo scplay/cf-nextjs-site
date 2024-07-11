@@ -33,7 +33,7 @@ const Home = () => {
     <div>
       <h1 style={{height: '45px'}} ><span ref={termEl} /></h1>
       <p>
-        Visit the <Link href="/about">About</Link> page.
+        Visit the <Link href="/pages/about">About</Link> page.
       </p>
     </div>
   );
