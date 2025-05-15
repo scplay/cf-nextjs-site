@@ -1,32 +1,41 @@
-# For Cloudflare Deployment Reference
-[deploy-a-static-nextjs-site](https://developers.cloudflare.com/pages/framework-guides/nextjs/deploy-a-static-nextjs-site/) - Next.js(Static Export)
 
-# Next.js Static Export
+# TODO
+
+
+- [ ] Add Deploy flow guide note
+- [ ] Upgrade nextjs to v15
+
+# Dev 
+
+`npm run dev`
+
+# Local Build
+
+```
+npm run build
+npm run start
+```
+
+# Production Deploy
+
+## Cloudflare StaticSite
+
+ [How to deploy a static nextjs site to Cloudflare](https://developers.cloudflare.com/pages/framework-guides/nextjs/deploy-a-static-nextjs-site/)
+
+## Next.js Static Export 
+
+[Next.js Static Export Guide Doc](https://nextjs.org/docs/app/building-your-application/deploying/static-exports)
 
 Next.js enables starting as a static site or Single-Page Application (SPA), then later optionally upgrading to use features that require a server.
 
 When running `next build`, Next.js generates an HTML file per route. By breaking a strict SPA into individual HTML files, Next.js can avoid loading unnecessary JavaScript code on the client-side, reducing the bundle size and enabling faster page loads.
 
-Learn more: https://nextjs.org/docs/app/building-your-application/deploying/static-exports
+# Static Files
 
-## Deploy your own
+Image Upload to SM.MS  
+[manage dashboard](https://smms.app/home/picture)
 
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example) or preview live with [StackBlitz](https://stackblitz.com/github/vercel/next.js/tree/canary/examples/with-static-export)
+# Fixed Issues
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-static-export)
-
-## How to use
-
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init), [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/), or [pnpm](https://pnpm.io) to bootstrap the example:
-
-```bash
-npx create-next-app --example with-static-export with-static-export-app
-```
-
-```bash
-yarn create next-app --example with-static-export with-static-export-app
-```
-
-```bash
-pnpm create next-app --example with-static-export with-static-export-app
-```
+- [x] make tailwind v4 works, wtf it not work at all
+  - need import root css file in `layout.tsx` rather than `app/page.tsx`

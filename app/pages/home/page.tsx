@@ -55,7 +55,8 @@ async function initParticleJS() {
   }
 }
 
-const ScHome = () => {
+// Move client-side initialization to a separate component
+const ClientSideEffects = () => {
   const termEl = useRef(null);
 
   useEffect(() => {
@@ -66,21 +67,21 @@ const ScHome = () => {
         `Greeting, commander! I'm Zeon Wang, a StarCraft fan.`,
         `Greeting, commander! I'm Zeon Wang, a developer.`,
       ],
-
-      // cursorChar: '_',
-      //  backSpeed: 0,
       typeSpeed: 50,
       loop: false,
     });
 
-    initParticleJS()
+    initParticleJS();
 
     return () => {
-      // Destroy Typed instance during cleanup to stop animation
       typed.destroy();
     };
   }, []);
 
+  return <span ref={termEl} id="intro"></span>;
+};
+
+const ScHome = () => {
   return (
     <div className="home-body">
       <div id="particles-js"></div>
@@ -100,7 +101,7 @@ const ScHome = () => {
 
       <main>
         <div className="typewriter">
-          <span ref={termEl} id="intro"></span>
+          <ClientSideEffects />
         </div>
 
         <div className="about">

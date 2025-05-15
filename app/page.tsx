@@ -1,42 +1,9 @@
+// 如果要使用 SSG, 入口就要使用，否则会报错
 "use client"
 
-import "./style/global.css";
+import Home from "./pages/home/page";
 
-import Link from "next/link";
-import ScHome from "./pages/schome/page";
-import { useEffect, useRef } from "react";
-import Typed from 'typed.js';
+// SSG 使用这个和 "use client" 功能是一样的，任意一个都可以？
+// export const dynamic = 'force-static';
 
-const Home = () => {
-  const termEl = useRef(null);
-  useEffect(() => {
-    const typed = new Typed(termEl.current, {
-      strings: [
-        'Hi! this is ZeonWang, a developer.',
-        'Hi! this is ZeonWang, a designer.',
-        'Hi! this is ZeonWang, a starcraft player.',
-      ],
-      
-      // cursorChar: '_',
-      backSpeed: 0,
-      typeSpeed: 40,
-      loop: true,
-    });
-
-    return () => {
-      // Destroy Typed instance during cleanup to stop animation
-      typed.destroy();
-    };
-  }, []);
-
-  return (
-    <div>
-      <h1 style={{height: '45px'}} ><span ref={termEl} /></h1>
-      <p>
-        Visit the <Link href="/pages/about">About</Link> page.
-      </p>
-    </div>
-  );
-};
-
-export default ScHome;
+export default Home;
