@@ -1,5 +1,5 @@
-// 如果要使用 SSG, 入口就要使用，否则会报错
-"use client"
+// 如果要使用 SSG, 入口就要使用，否则会报错 ? 没报错呀
+// "use client"
 
 import Home from "./pages/home/page";
 

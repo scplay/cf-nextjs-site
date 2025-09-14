@@ -3,7 +3,9 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "serve out"
+    "start": "npm run start:ssg",
+    "start:ssg": "serve out",
+    "start:ssr": "next start"
   },
   "dependencies": {
     "@types/node": "^18.11.5",

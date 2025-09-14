@@ -32,12 +32,22 @@ interface CVData {
     phone: string;
     address: string;
   };
-  work?: {
-    meta: Record<string, unknown>;
+  profile: {
+    meta: {
+      title: string;
+    };
+    content: string[];
+  };
+  work: {
+    meta: {
+      title: string;
+    };
     timeline: Job[];
   };
   education: {
-    meta: Record<string, unknown>;
+    meta: {
+      title: string;
+    };
     timeline: Education[];
   };
 }
@@ -68,9 +78,19 @@ function CVContent() {
         </div>
       </div>
 
+      {/* Profile */}
+      <section className="mb-8">
+        <h2 className="text-2xl font-bold mb-4">{data.profile.meta.title}</h2>
+        <ul className="list-disc list-inside">
+          {data.profile.content.map((item, index) => (
+            <li key={index} className="text-gray-700">{item}</li>
+          ))}
+        </ul>
+      </section>
+
       {/* Work Experience */}
       <section className="mb-8">
-        <h2 className="text-2xl font-bold mb-4">Work Experience</h2>
+        <h2 className="text-2xl font-bold mb-4">{data.work.meta.title}</h2>
         {data.work?.timeline.map((job, index) => (
           <div key={index} className="mb-6">
             <div className="flex justify-between items-baseline">
@@ -100,14 +120,14 @@ function CVContent() {
 
       {/* Education */}
       <section>
-        <h2 className="text-2xl font-bold mb-4">Education</h2>
+        <h2 className="text-2xl font-bold mb-4">{data.education.meta.title}</h2>
         {data.education.timeline.map((edu, index) => (
           <div key={index} className="mb-4">
             <div className="flex justify-between items-baseline">
               <h3 className="text-xl font-semibold">{edu.school}</h3>
               <span className="text-gray-600">{edu.year}</span>
             </div>
-            <p className="text-gray-700">{edu.degree} in {edu.major}</p>
+            <p className="text-gray-700">{edu.degree} - {edu.major}</p>
           </div>
         ))}
       </section>

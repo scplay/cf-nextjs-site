@@ -9,6 +9,7 @@ const ABOUT_ROUTE = '/pages/about';
 
 async function initParticleJS() {
   if (process?.title === 'browser') {
+    console.log("initialize particleJS");
 
     await import("particles.js")
 
@@ -111,13 +112,13 @@ const ScHome = () => {
             countless cyber projects that have honed my skills and fueled my
             passion for cutting-edge technology.
           </p>
-          <p>
+          <p className="mt-4">
             My journey began with a fascination for how code can transform
             concepts into reality, much like to see a simple command unleash a
             psionic storm.
           </p>
-          <p>My armory includes:</p>
-          <ul>
+          <p className="mt-4">My armory includes:</p>
+          <ul className="ml-2">
             <li>
               Barrack - Full-stack web development (js, php, node.js, mysql,
               linux)
@@ -132,7 +133,7 @@ const ScHome = () => {
               control
             </li>
           </ul>
-          <p>
+          <p className="mt-4">
             Feel free to establish a neural link with me. I'm open to forming
             alliances and willing to support in the battlefield!
           </p>
@@ -141,9 +142,10 @@ const ScHome = () => {
 
       <div className="social-links">
         <a href="https://github.com/scplay">GitHub</a>
-        <a href="https://twitter.com/zeon_wang">Twitter</a>
+        {/* twitter 没内容，没必要展示 */}
+        {/* <a href="https://twitter.com/zeon_wang">Twitter</a> */}
         <a href="https://www.linkedin.com/in/zeon-wang-3639aa2b/">LinkedIn</a>
-        <Link href={ABOUT_ROUTE}>Contact</Link>
+        <Link href={ABOUT_ROUTE}>Profile</Link>
       </div>
     </div>
   );
