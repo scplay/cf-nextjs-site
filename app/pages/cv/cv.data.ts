@@ -13,11 +13,17 @@ export const cvData = {
         title: 'Who I Am'
       },
       content: [
-        'Curiosity-driven. I need to understand how things work — unless it\'s quantum physics, then maybe tomorrow.',
-        'I\'d rather build something meaningful with the right people or nothing at all.',
-        'AI is my multiplier, not my replacement.',
-        'I aspire to be an artisan, not a copy-paster. Inspired by Jobs\' obsession with craft, Munger\'s mental models, and Taylor Otwell\'s elegance in code.',
+        'Curious mind, building order.',
       ],
+      inspirations: {
+        prefix: 'Inspired by',
+        items: [
+          { name: 'Steve Jobs', url: 'https://www.youtube.com/watch?v=UF8uR6Z6KLc' },
+          { name: 'Taylor Otwell', url: 'https://www.youtube.com/watch?v=HYwRc7WUjsM' },
+          { name: 'Charlie Munger', url: 'https://www.stripe.press/poor-charlies-almanack' },
+        ],
+        suffix: '',
+      },
       footer: 'For technical deep-dives and project stories → medium.com/@vowsole'
     },
 
@@ -30,29 +36,29 @@ export const cvData = {
           company: 'OSL',
           logo: 'https://mma.prnewswire.com/media/2620420/Untitled_design_Logo.jpg',
           url: 'https://www.osl.com/',
-          position: 'Frontend Engineer',
+          position: 'Expert Frontend Engineer',
           year: `2024.8 - ${new Date().getFullYear()}.${new Date().getMonth() + 1}(Now)`,
 
           projects: [
             {
               name: 'Trade System',
-              description: 'Build a spot/future trading system',
+              description: 'Spot / Futures trading system',
               year: '2025.05 - Now',
               stack: ['React', 'Vite', 'TradingView']
             },
 
             {
               name: 'Official Site',
-              description: 'Global official site rebranding / Content Management System',
+              description: 'Global / HK / JP official site rebranding / CMS',
               year: '2024.08 - 2025.04',
-              stack: ['Next.js', 'Vue', 'Contentful']
+              stack: ['Next.js', 'Vue', 'Contentful', "Modern.js"]
             },
           ]
         },
 
         {
           company: 'Freelance',
-          logo: 'https://cdn-icons-png.flaticon.com/512/2876/2876612.png',
+          logo: 'https://s2.loli.net/2026/01/17/Z5QTKorI8g6qOwa.png',
           position: 'Full Stack Developer',
           year: '2022.10 - 2024.8',
 
@@ -61,7 +67,7 @@ export const cvData = {
               name: 'IdleFish Assistant',
               description: 'Build a crawler to help customers find the best deals on IdleFish',
               year: '2023.5 - 2024.5',
-              stack: ['Vue', 'Node.js', 'Postgres', 'Linux']
+              stack: ['Vue', 'Node.js', 'Frida.js', 'Postgres', 'Linux']
             },
           ]
         },
@@ -76,7 +82,7 @@ export const cvData = {
           projects: [
             {
               name: 'Shopee Food - Merchant',
-              description: 'Responsible for shopee food merchant system development',
+              description: 'Merchant App & Admin for Vietnam / Indonesia',
               year: '2021.9 - 2022.10',
               stack: ['React', 'Node.js', 'ReactNative']
             },
@@ -86,17 +92,17 @@ export const cvData = {
 
         {
           company: 'Bigo',
-          logo: 'https://mma.prnewswire.com/media/1476800/Bigo_Live_Logo.jpg',
+          logo: 'https://s2.loli.net/2026/01/17/2ciTRZzmSD7aFjG.png',
           url: 'https://www.bigo.tv/',
           position: 'Senior Frontend Engineer',
           year: '2020.11 - 2021.9',
 
           projects: [
             {
-              name: 'SandHill Admin - RTC Service',
-              description: 'Build a livestream admin and RTC service',
+              name: 'Livestream Admin',
+              description: 'Admin dashboard, review microservice, RTC SDK',
               year: '2020.11 - 2021.9',
-              stack: ['Vue', 'PHP', 'Docker', 'Deno', 'WebRTC']
+              stack: ['Vue', 'PHP', 'Docker', 'Deno', 'Egg.js', 'WebRTC']
             },
           ]
         },
@@ -110,8 +116,8 @@ export const cvData = {
 
           projects: [
             {
-              name: 'Candy Wrapping - KOL Community - Mini Program',
-              description: 'Build a Product Experience Community',
+              name: 'Candy - Mini Program',
+              description: 'Product review community',
               year: '2019.7 - 2021.7',
               stack: ['React', 'Node.js', 'WeChat Mini Program']
             },
@@ -122,13 +128,13 @@ export const cvData = {
           company: 'PanX Software',
           logo: 'https://s2.loli.net/2025/05/19/HT7PRmCo9qSJh45.png',
           url: 'https://www.panxsoft.com/',
-          position: 'Senior Frontend Engineer',
+          position: 'Frontend Engineer / Web Lead',
           year: '2016.7 - 2019.7',
 
           projects: [
             {
-              name: 'We Show - AR Try-On E-Commerce Platform',
-              description: 'Responsible for build shopee system',
+              name: 'Web AR Platform',
+              description: 'Glasses/cosmetics AR try-on, Web SDK, e-commerce',
               year: '2016-2019',
               stack: ['Vue', 'Node.js', 'Three.js', 'Laravel']
             },
@@ -174,11 +180,17 @@ export const cvData = {
         title: '我'
       },
       content: [
-        '好奇心驱动、想弄清所有事物的工作原理 - 太难的问题除外',
-        '和对的人一起做有意义的事 或 什么都不做',
-        '现在的 AI 很好用，未来的 AI 更好用',
-        '受到 Steve Jobs 、Charlie Munger 和 Taylor Otwell 的启发',
+        '充满好奇，构建秩序',
       ],
+      inspirations: {
+        prefix: '受到',
+        items: [
+          { name: 'Steve Jobs', url: 'https://www.youtube.com/watch?v=UF8uR6Z6KLc' },
+          { name: 'Taylor Otwell', url: 'https://www.youtube.com/watch?v=HYwRc7WUjsM' },
+          { name: 'Charlie Munger', url: 'https://www.stripe.press/poor-charlies-almanack' },
+        ],
+        suffix: ' 的启发',
+      },
       footer: '技术深度文章和项目故事 → medium.com/@vowsole'
     },
 
@@ -197,23 +209,23 @@ export const cvData = {
           projects: [
             {
               name: '交易系统',
-              description: '现货/合约交易系统',
+              description: '现货 / 合约交易系统',
               year: '2025.05 - Now',
               stack: ['React', 'Vite', 'TradingView']
             },
 
             {
               name: '官方网站',
-              description: '全球/香港/日本站官网重构 / 内容管理系统',
+              description: '官网重构 / 内容管理系统',
               year: '2024.08 - 2025.04',
-              stack: ['Next.js', 'Vue', 'Contentful']
+              stack: ['Next.js', 'Vue', 'Contentful', "Modern.js"]
             },
           ]
         },
 
         {
           company: '自由职业',
-          logo: 'https://cdn-icons-png.flaticon.com/512/2876/2876612.png',
+          logo: 'https://s2.loli.net/2026/01/17/Z5QTKorI8g6qOwa.png',
           position: 'Full Stack Developer',
           year: '2022.10 - 2024.8',
 
@@ -222,7 +234,7 @@ export const cvData = {
               name: '电商助手',
               description: '商品爬虫通知系统，帮助用户在闲鱼上找到最优惠的商品',
               year: '2023.5 - 2024.5',
-              stack: ['Vue', 'Node.js', 'Postgres', 'Linux']
+              stack: ['Vue', 'Node.js', 'Frida.js', 'Postgres', 'Linux']
             },
           ]
         },
@@ -246,7 +258,7 @@ export const cvData = {
 
         {
           company: 'BIGO',
-          logo: 'https://mma.prnewswire.com/media/1476800/Bigo_Live_Logo.jpg',
+          logo: 'https://s2.loli.net/2026/01/17/2ciTRZzmSD7aFjG.png',
           url: 'https://www.bigo.tv/',
           position: '高级前端工程师',
           year: '2020.11 - 2021.9',
@@ -256,7 +268,7 @@ export const cvData = {
               name: '直播中台',
               description: '直播数据后台、 审核微服务、RTC SDK 开发',
               year: '2020.11 - 2021.9',
-              stack: ['Vue', 'PHP', 'Docker', 'Deno', 'WebRTC']
+              stack: ['Vue', 'PHP', 'Docker', 'Deno', 'Egg.js', 'WebRTC']
             },
           ]
         },

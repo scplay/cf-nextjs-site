@@ -8,6 +8,7 @@ interface Project {
   name: string;
   description: string;
   year: string;
+  stack?: string[];
 }
 
 interface Job {
@@ -27,6 +28,11 @@ interface Education {
   year: string;
 }
 
+interface Inspiration {
+  name: string;
+  url: string;
+}
+
 export interface CVData {
   header: {
     name: string;
@@ -40,6 +46,11 @@ export interface CVData {
       title: string;
     };
     content: string[];
+    inspirations?: {
+      prefix: string;
+      items: Inspiration[];
+      suffix: string;
+    };
     footer?: string;
   };
   work: {
@@ -58,6 +69,7 @@ export interface CVData {
 
 export function CVContent({ lang = 'en' }: { lang?: 'en' | 'zh' }) {
   const [theme, setTheme] = useState<'light' | 'dark'>('light');
+  const [expandedJobs, setExpandedJobs] = useState<Set<number>>(new Set([0]));
   const data = cvData[lang] as CVData;
   const switchPath = lang === 'en' ? '/zh-CN/pages/cv' : '/pages/cv';
   const isDark = theme === 'dark';
@@ -67,6 +79,25 @@ export function CVContent({ lang = 'en' }: { lang?: 'en' | 'zh' }) {
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     setTheme(prefersDark ? 'dark' : 'light');
   }, []);
+
+  const toggleJob = (index: number) => {
+    setExpandedJobs(prev => {
+      const next = new Set(prev);
+      if (next.has(index)) next.delete(index);
+      else next.add(index);
+      return next;
+    });
+  };
+
+  const toggleAll = () => {
+    if (expandedJobs.size === data.work.timeline.length) {
+      setExpandedJobs(new Set());
+    } else {
+      setExpandedJobs(new Set(data.work.timeline.map((_, i) => i)));
+    }
+  };
+
+  const allExpanded = expandedJobs.size === data.work.timeline.length;
 
   return (
     <div className={`min-h-screen transition-colors duration-300 ${isDark ? 'bg-gray-900' : 'bg-white'}`}>
@@ -147,16 +178,35 @@ export function CVContent({ lang = 'en' }: { lang?: 'en' | 'zh' }) {
         </div>
 
         {/* Profile */}
-        <section className="mb-8">
+        <section className={`mb-8 pb-8 border-b ${isDark ? 'border-gray-800' : 'border-gray-200'}`}>
           <h2 className={`text-2xl font-bold mb-4 ${isDark ? 'text-white' : 'text-gray-900'}`}>
-            {data.profile.meta.title}
+            {/* {data.profile.meta.title} */}
           </h2>
-          <div className="space-y-3">
+          <div className="space-y-2">
             {data.profile.content.map((item, index) => (
-              <p key={index} className={`${isDark ? 'text-gray-300' : 'text-gray-700'} leading-relaxed`}>
+              <p key={index} className={`italic ${isDark ? 'text-gray-400' : 'text-gray-600'} leading-relaxed`}>
                 "{item}"
               </p>
             ))}
+            {data.profile.inspirations && (
+              <p className={`italic ${isDark ? 'text-gray-400' : 'text-gray-600'} leading-relaxed`}>
+                "{data.profile.inspirations.prefix}{' '}
+                {data.profile.inspirations.items.map((item, i) => (
+                  <span key={item.name}>
+                    <a
+                      href={item.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`underline not-italic ${isDark ? 'text-gray-300 hover:text-white' : 'text-gray-700 hover:text-black'}`}
+                    >
+                      {item.name}
+                    </a>
+                    {i < data.profile.inspirations!.items.length - 1 && (lang === 'zh' ? '、' : ', ')}
+                  </span>
+                ))}
+                {data.profile.inspirations.suffix}"
+              </p>
+            )}
           </div>
           {data.profile.footer && (
             <p className={`mt-4 text-sm ${isDark ? 'text-gray-500' : 'text-gray-500'}`}>
@@ -178,60 +228,111 @@ export function CVContent({ lang = 'en' }: { lang?: 'en' | 'zh' }) {
         </section>
 
         {/* Work Experience */}
-        <section className="mb-8">
-          <h2 className={`text-2xl font-bold mb-4 ${isDark ? 'text-white' : 'text-gray-900'}`}>
-            {data.work.meta.title}
-          </h2>
-          {data.work?.timeline.map((job, index) => (
-            <div key={index} className="mb-6">
-              <div className="flex justify-between items-center">
-                <div className="flex items-center gap-3">
-                  {/* Logo container - fixed size with background for consistency */}
-                  <div className={`w-10 h-10 rounded-lg flex items-center justify-center overflow-hidden shrink-0 ${
-                    isDark ? 'bg-white/10' : 'bg-gray-100'
-                  }`}>
-                    {job.logo ? (
-                      <img 
-                        src={job.logo} 
-                        alt={`${job.company} logo`} 
-                        className="w-7 h-7 object-contain"
-                      />
-                    ) : (
-                      <span className={`text-lg font-bold ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
-                        {job.company.charAt(0)}
-                      </span>
-                    )}
+        <section className={`mb-8 pb-8 border-b ${isDark ? 'border-gray-800' : 'border-gray-200'}`}>
+          <div className="flex justify-between items-center mb-4">
+            <h2 className={`text-2xl font-bold ${isDark ? 'text-white' : 'text-gray-900'}`}>
+              {data.work.meta.title}
+            </h2>
+            <button
+              onClick={toggleAll}
+              className={`text-xs px-2 py-1 rounded transition-colors ${
+                isDark 
+                  ? 'text-gray-400 hover:text-gray-200 hover:bg-gray-700' 
+                  : 'text-gray-500 hover:text-gray-700 hover:bg-gray-100'
+              }`}
+            >
+              {allExpanded ? (lang === 'zh' ? '收起全部' : 'Collapse All') : (lang === 'zh' ? '展开全部' : 'Expand All')}
+            </button>
+          </div>
+          {data.work?.timeline.map((job, index) => {
+            const isExpanded = expandedJobs.has(index);
+            return (
+              <div key={index} className="mb-6">
+                <div 
+                  className="flex justify-between items-center cursor-pointer"
+                  onClick={() => toggleJob(index)}
+                >
+                  <div className="flex items-center gap-3">
+                    {/* Expand/Collapse indicator */}
+                    <svg 
+                      className={`w-3 h-3 transition-transform ${isExpanded ? 'rotate-90' : ''} ${isDark ? 'text-gray-600' : 'text-gray-300'}`} 
+                      fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                    </svg>
+                    {/* Logo container */}
+                    <div className={`w-10 h-10 rounded-lg flex items-center justify-center overflow-hidden shrink-0 ${
+                      isDark ? 'bg-white/10' : 'bg-gray-100'
+                    }`}>
+                      {job.logo ? (
+                        <img 
+                          src={job.logo} 
+                          alt={`${job.company} logo`} 
+                          className="w-7 h-7 object-contain rounded-sm"
+                        />
+                      ) : (
+                        <span className={`text-lg font-bold ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
+                          {job.company.charAt(0)}
+                        </span>
+                      )}
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <h3 className={`text-xl font-semibold ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                        {job.url ? (
+                          <a 
+                            href={job.url} 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            onClick={(e) => e.stopPropagation()}
+                            className={`inline-flex items-center gap-1 hover:underline ${isDark ? 'hover:text-gray-300' : 'hover:text-gray-700'}`}
+                          >
+                            {job.company}
+                            <svg className={`w-3 h-3 ${isDark ? 'text-gray-500' : 'text-gray-400'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+                            </svg>
+                          </a>
+                        ) : (
+                          job.company
+                        )}
+                      </h3>
+                      {!isExpanded && (
+                        <span className={`hidden sm:inline text-sm ${isDark ? 'text-gray-500' : 'text-gray-400'}`}>
+                          · {job.position}
+                        </span>
+                      )}
+                    </div>
                   </div>
-                  <h3 className={`text-xl font-semibold ${isDark ? 'text-white' : 'text-gray-900'}`}>
-                    {job.url ? (
-                      <a 
-                        href={job.url} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className={`inline-flex items-center gap-1 hover:underline ${isDark ? 'hover:text-gray-300' : 'hover:text-gray-700'}`}
-                      >
-                        {job.company}
-                        <svg className={`w-3 h-3 ${isDark ? 'text-gray-500' : 'text-gray-400'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
-                        </svg>
-                      </a>
-                    ) : (
-                      job.company
-                    )}
-                  </h3>
+                  <span className={`text-xs ${isDark ? 'text-gray-600' : 'text-gray-400'}`}>{job.year}</span>
                 </div>
-                <span className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>{job.year}</span>
+                {/* Collapsible content */}
+                <div className={`overflow-hidden transition-all duration-200 ${isExpanded ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'}`}>
+                  <p className={`mb-2 ml-[68px] mt-2 ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>{job.position}</p>
+                  {job.projects?.map((project, pIndex) => (
+                    <div key={pIndex} className="ml-[68px] mt-3">
+                      <p className={`font-medium ${isDark ? 'text-gray-200' : 'text-gray-800'}`}>{project.name}</p>
+                      <p className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>{project.description}</p>
+                      {project.stack && project.stack.length > 0 && (
+                        <div className="flex flex-wrap gap-1.5 mt-1.5">
+                          {project.stack.map((tech) => (
+                            <span 
+                              key={tech} 
+                              className={`text-xs px-2 py-0.5 rounded ${
+                                isDark 
+                                  ? 'bg-gray-800 text-gray-400' 
+                                  : 'bg-gray-100 text-gray-600'
+                              }`}
+                            >
+                              {tech}
+                            </span>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
               </div>
-              <p className={`mb-2 ml-[52px] ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>{job.position}</p>
-              {job.projects?.map((project, pIndex) => (
-                <div key={pIndex} className="ml-[52px] mt-2">
-                  <p className={`font-medium ${isDark ? 'text-gray-200' : 'text-gray-800'}`}>{project.name}</p>
-                  <p className={isDark ? 'text-gray-400' : 'text-gray-600'}>{project.description}</p>
-                  <p className={`text-sm ${isDark ? 'text-gray-500' : 'text-gray-500'}`}>{project.year}</p>
-                </div>
-              ))}
-            </div>
-          ))}
+            );
+          })}
         </section>
 
         {/* Education */}
@@ -263,7 +364,7 @@ export function CVContent({ lang = 'en' }: { lang?: 'en' | 'zh' }) {
                     {edu.school}
                   </h3>
                 </div>
-                <span className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>{edu.year}</span>
+                <span className={`text-xs ${isDark ? 'text-gray-600' : 'text-gray-400'}`}>{edu.year}</span>
               </div>
               <p className={`ml-[52px] ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>{edu.degree} - {edu.major}</p>
             </div>
