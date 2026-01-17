@@ -141,17 +141,19 @@ export const cvData = {
     
     education: {
       meta: {
-        
+        title: 'Education'
       },
       timeline: [
         {
           school: 'South China University of Technology',
+          logo: 'https://s2.loli.net/2026/01/17/CL37rkfs6JgvxPQ.png',
           degree: 'Master of Industrial Design Engineering',
           major: 'Industrial Design',
           year: '2013-2016'
         },
         {
           school: 'Shenyang University of Technology',
+          logo: 'https://s2.loli.net/2026/01/17/FPH8wLRput35ZWI.png',
           degree: 'Bachelor',
           major: 'Industrial Design',
           year: '2008-2012'
@@ -235,11 +237,10 @@ export const cvData = {
           url: 'https://www.shopee.com/',
           position: 'Expert Engineer',
           year: '2021.9 - 2022.10',
-
           projects: [
             {
               name: 'Shopee Food - 商家端',
-              description: '负责Shopee Food 越南/印尼商家端开发',
+              description: '越南 / 印尼的商家端 App 、后台开发',
               year: '2021.9 - 2022.10',
               stack: ['React', 'Node.js', 'ReactNative']
             },
@@ -256,8 +257,8 @@ export const cvData = {
 
           projects: [
             {
-              name: 'SandHill Admin - RTC Service',
-              description: '负责直播数据后台、RTC 服务开发',
+              name: '直播中台',
+              description: '直播数据后台、 审核微服务、RTC SDK 开发',
               year: '2020.11 - 2021.9',
               stack: ['Vue', 'PHP', 'Docker', 'Deno', 'WebRTC']
             },
@@ -273,7 +274,7 @@ export const cvData = {
 
           projects: [
             {
-              name: '糖纸 KOL 社区 - 小程序',
+              name: '糖纸众测社区 - 小程序',
               description: '负责产品体验社区开发',
               year: '2019.7 - 2021.7',
               stack: ['React', 'Node.js', 'WeChat Mini Program']
@@ -290,8 +291,8 @@ export const cvData = {
 
           projects: [
             {
-              name: 'We Show - AR 试穿平台',
-              description: '负责 AR 试穿平台、电商系统开发',
+              name: '眼镜、美妆 Web AR 平台',
+              description: '负责 Web SDK，电商平台开发',
               year: '2016-2019',
               stack: ['Vue', 'Node.js', 'Three.js', 'Laravel', 'Linux']
             },
@@ -307,14 +308,14 @@ export const cvData = {
       timeline: [
         {
           school: '华南理工大学',
-          url: 'https://www.scut.edu.cn/',
+          logo: 'https://s2.loli.net/2026/01/17/CL37rkfs6JgvxPQ.png',
           degree: '硕士',
           major: '工业设计工程',
           year: '2013-2016'
         },
         {
           school: '沈阳工业大学',
-          url: 'https://www.sut.edu.cn/',
+          logo: 'https://s2.loli.net/2026/01/17/FPH8wLRput35ZWI.png',
           degree: '本科',
           major: '工业设计',
           year: '2008-2012'
