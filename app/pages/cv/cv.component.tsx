@@ -40,6 +40,7 @@ export interface CVData {
       title: string;
     };
     content: string[];
+    footer?: string;
   };
   work: {
     meta: {
@@ -150,11 +151,30 @@ export function CVContent({ lang = 'en' }: { lang?: 'en' | 'zh' }) {
           <h2 className={`text-2xl font-bold mb-4 ${isDark ? 'text-white' : 'text-gray-900'}`}>
             {data.profile.meta.title}
           </h2>
-          <ul className="list-disc list-inside">
+          <div className="space-y-3">
             {data.profile.content.map((item, index) => (
-              <li key={index} className={isDark ? 'text-gray-300' : 'text-gray-700'}>{item}</li>
+              <p key={index} className={`${isDark ? 'text-gray-300' : 'text-gray-700'} leading-relaxed`}>
+                "{item}"
+              </p>
             ))}
-          </ul>
+          </div>
+          {data.profile.footer && (
+            <p className={`mt-4 text-sm ${isDark ? 'text-gray-500' : 'text-gray-500'}`}>
+              {data.profile.footer.includes('→') ? (
+                <>
+                  {data.profile.footer.split('→')[0]}→{' '}
+                  <a 
+                    href="https://medium.com/@vowsole" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className={`underline ${isDark ? 'text-gray-400 hover:text-gray-300' : 'text-gray-600 hover:text-gray-900'}`}
+                  >
+                    {data.profile.footer.split('→')[1].trim()}
+                  </a>
+                </>
+              ) : data.profile.footer}
+            </p>
+          )}
         </section>
 
         {/* Work Experience */}

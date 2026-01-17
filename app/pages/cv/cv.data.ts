@@ -10,17 +10,15 @@ export const cvData = {
 
     profile: {
       meta: {
-        title: 'Profile'
+        title: 'Who I Am'
       },
       content: [
-        'Managed Web development teams of around 10 people',
-        'Familiar with EcmaScript standards, proficient in Vue/React frameworks, TDD',
-        'Proficient in version control systems, participated in open source projects',
-        'Familiar with backend development (Node.js/PHP), Linux system operations, containerization, and microservices',
-        'Skilled in using network debugging tools for rapid problem identification',
-        'Product-oriented with problem-solving approach, willing to face challenges and changes',
-        'Good English proficiency, IELTS 7.5 (General)'
+        'Curiosity-driven. I need to understand how things work — unless it\'s quantum physics, then maybe tomorrow.',
+        'I\'d rather build something meaningful with the right people or nothing at all.',
+        'AI is my multiplier, not my replacement.',
+        'I aspire to be an artisan, not a copy-paster. Inspired by Jobs\' obsession with craft, Munger\'s mental models, and Taylor Otwell\'s elegance in code.',
       ],
+      footer: 'For technical deep-dives and project stories → medium.com/@vowsole'
     },
 
     work: {
@@ -173,17 +171,15 @@ export const cvData = {
 
     profile: {
       meta: {
-        title: '个人简介'
+        title: '我'
       },
       content: [
-        '管理过10人左右的Web 开发团队',
-        '熟悉EcmaScript 标准，熟练使用Vue / React 框架、前端工程化工具，TDD开发',
-        '熟练使用版本控制系统，参与过开源项目',
-        '熟悉后端开发（Node.js / PHP），Linux 系统运维，熟悉容器化、微服务',
-        '熟练使用网络调试工具完成问题快速定位',
-        '对产品负责问题导向，勇于应对挑战与变化',
-        '英语良好，雅思7.5（G类）'
+        '好奇心驱动、想弄清所有事物的工作原理 - 太难的问题除外',
+        '和对的人一起做有意义的事 或 什么都不做',
+        '现在的 AI 很好用，未来的 AI 更好用',
+        '受到 Steve Jobs 、Charlie Munger 和 Taylor Otwell 的启发',
       ],
+      footer: '技术深度文章和项目故事 → medium.com/@vowsole'
     },
 
     work: {
@@ -201,7 +197,7 @@ export const cvData = {
           projects: [
             {
               name: '交易系统',
-              description: '现货/期货交易系统',
+              description: '现货/合约交易系统',
               year: '2025.05 - Now',
               stack: ['React', 'Vite', 'TradingView']
             },
@@ -240,7 +236,7 @@ export const cvData = {
           projects: [
             {
               name: 'Shopee Food - 商家端',
-              description: '越南 / 印尼的商家端 App 、后台开发',
+              description: '越南 / 印尼的商家端 App 、管理后台开发',
               year: '2021.9 - 2022.10',
               stack: ['React', 'Node.js', 'ReactNative']
             },
