@@ -249,17 +249,12 @@ export function CVContent({ lang = 'en' }: { lang?: 'en' | 'zh' }) {
             return (
               <div key={index} className="mb-6">
                 <div 
-                  className="flex justify-between items-center cursor-pointer"
+                  className={`flex justify-between items-center cursor-pointer -mx-3 px-3 py-2 rounded-lg transition-colors ${
+                    isDark ? 'hover:bg-white/5' : 'hover:bg-gray-50'
+                  }`}
                   onClick={() => toggleJob(index)}
                 >
                   <div className="flex items-center gap-3">
-                    {/* Expand/Collapse indicator */}
-                    <svg 
-                      className={`w-3 h-3 transition-transform ${isExpanded ? 'rotate-90' : ''} ${isDark ? 'text-gray-600' : 'text-gray-300'}`} 
-                      fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-                    </svg>
                     {/* Logo container */}
                     <div className={`w-10 h-10 rounded-lg flex items-center justify-center overflow-hidden shrink-0 ${
                       isDark ? 'bg-white/10' : 'bg-gray-100'
@@ -277,22 +272,24 @@ export function CVContent({ lang = 'en' }: { lang?: 'en' | 'zh' }) {
                       )}
                     </div>
                     <div className="flex items-center gap-2">
-                      <h3 className={`text-xl font-semibold ${isDark ? 'text-white' : 'text-gray-900'}`}>
-                        {job.url ? (
+                      <h3 className={`text-xl font-semibold flex items-center gap-1.5 ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                        {job.company}
+                        {job.url && (
                           <a 
                             href={job.url} 
                             target="_blank" 
                             rel="noopener noreferrer"
                             onClick={(e) => e.stopPropagation()}
-                            className={`inline-flex items-center gap-1 hover:underline ${isDark ? 'hover:text-gray-300' : 'hover:text-gray-700'}`}
+                            className={`p-1 rounded transition-colors ${
+                              isDark 
+                                ? 'text-gray-600 hover:text-gray-300 hover:bg-white/10' 
+                                : 'text-gray-400 hover:text-gray-600 hover:bg-gray-200'
+                            }`}
                           >
-                            {job.company}
-                            <svg className={`w-3 h-3 ${isDark ? 'text-gray-500' : 'text-gray-400'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                            <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                               <path strokeLinecap="round" strokeLinejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
                             </svg>
                           </a>
-                        ) : (
-                          job.company
                         )}
                       </h3>
                       {!isExpanded && (
@@ -302,13 +299,21 @@ export function CVContent({ lang = 'en' }: { lang?: 'en' | 'zh' }) {
                       )}
                     </div>
                   </div>
-                  <span className={`text-xs ${isDark ? 'text-gray-600' : 'text-gray-400'}`}>{job.year}</span>
+                  <div className="flex items-center gap-2">
+                    <span className={`text-xs ${isDark ? 'text-gray-600' : 'text-gray-400'}`}>{job.year}</span>
+                    <svg 
+                      className={`w-3 h-3 transition-transform ${isExpanded ? 'rotate-90' : ''} ${isDark ? 'text-gray-600' : 'text-gray-300'}`} 
+                      fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                    </svg>
+                  </div>
                 </div>
                 {/* Collapsible content */}
                 <div className={`overflow-hidden transition-all duration-200 ${isExpanded ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'}`}>
-                  <p className={`mb-2 ml-[68px] mt-2 ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>{job.position}</p>
+                  <p className={`mb-2 ml-[52px] mt-2 ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>{job.position}</p>
                   {job.projects?.map((project, pIndex) => (
-                    <div key={pIndex} className="ml-[68px] mt-3">
+                    <div key={pIndex} className="ml-[52px] mt-3">
                       <p className={`font-medium ${isDark ? 'text-gray-200' : 'text-gray-800'}`}>{project.name}</p>
                       <p className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>{project.description}</p>
                       {project.stack && project.stack.length > 0 && (
